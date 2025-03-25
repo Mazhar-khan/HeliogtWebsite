@@ -23,7 +23,7 @@ export default function Slider() {
 
     return (
         <div data-aos="fade-up">
-            <h2 style={{ textAlign: 'center', marginTop: '8%' }}> <strong>Our Gallery</strong></h2>
+            <h2 style={{ textAlign: 'center', marginTop: '8%' }}> <strong>Our Work</strong></h2>
             <div className="containers" style={{ marginTop: '3%' }}>
                 {images?.map((image, index) => (
                     <div className="box" key={index} data-aos="fade-up">

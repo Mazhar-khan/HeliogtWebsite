@@ -4,7 +4,6 @@ import 'aos/dist/aos.css';
 import axios from "axios";
 
 export default function Boxes() {
-
     const [data, setData] = useState(null);
 
     useEffect(() => {
@@ -57,15 +56,14 @@ export default function Boxes() {
                                                                 <br />
                                                                 <strong style={{ color: "white", fontSize: '24px' }}> {it.title.split(" ")[2]}</strong>
                                                             </p>
-    
                                                         </div>
     
                                                         <hr style={{ width: '50%', marginLeft: '25%', marginTop: '12%', color: 'rgba(255, 255, 255, 0.2)' }} />
-                                                        <p style={{ whiteSpace: "pre-wrap" }}>&nbsp;</p>
-                                                        <p style={{color: '#EEEEEE', padding: '15px', textAlign: 'center' }}>
-                                                        <span dangerouslySetInnerHTML={{ __html: it.text }} />
-                                                        </p>
-                                                        <p style={{ whiteSpace: "pre-wrap" }}>&nbsp;</p>
+                                                        {/* <p style={{ whiteSpace: "pre-wrap" }}>&nbsp;</p> */}
+                                                        <p style={{ padding: '15px', textAlign: 'center' }}>
+                                                        <span style={{ color:'#fff !important' }} dangerouslySetInnerHTML={{ __html: it.text }} />
+                                                        </p> 
+                                                        {/* <p style={{ whiteSpace: "pre-wrap" }}>&nbsp;</p> */}
                                                     </div>
                                                 </div>
                                             </div>
