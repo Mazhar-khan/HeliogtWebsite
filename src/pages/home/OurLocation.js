@@ -41,17 +41,17 @@ export default function OurLocation() {
                                         <p style={{ textAlign: 'left', fontSize: '13px' }}>210 SW Market Street<br />
                                             Lees Summit, MO, United States</p>
                                         <hr />
-                                        <div style={{ marginTop: '12%' }}>
+                                        {/* <div style={{ marginTop: '12%' }}>
                                             <h4 style={{ textAlign: 'left', fontSize: '18px' }}>KANSAS CITY</h4>
                                             <p style={{ textAlign: 'left', fontSize: '13px' }}>1321 BURLINGTON ST SUITE 300 NORTH KANSAS CITY 64116</p>
                                         </div>
                                         <div style={{ marginTop: '6%' }}>
                                             <h4 style={{ textAlign: 'left', fontSize: '18px' }}>LEE’S SUMMIT</h4>
                                             <p style={{ textAlign: 'left', fontSize: '13px' }}>210 SW Market St. Suite 158 Lee’s Summit MO 64063</p>
-                                        </div>
+                                        </div> */}
                                         <div class="d-flex justify-content-start gap-2">
-                                            <a class="buttonl-elements" >Request a free estimate </a>
-                                            <a class="buttonl-elements" >Request a free estimate </a>
+                                            <a class="buttonl-elements" href='/estimated' >Request a free estimate </a>
+                                            <a class="buttonl-elements" href='/estimated' >Request a free estimate </a>
                                         </div>
 
                                     </div>

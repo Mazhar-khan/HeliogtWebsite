@@ -3,7 +3,7 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 
 export default function ServicesResidental({ data }) {
-    console.log('data',data)
+    console.log('data12',data)
     useEffect(() => {
         AOS.init({ duration: 1000, once: true });
     }, []);
@@ -27,8 +27,8 @@ export default function ServicesResidental({ data }) {
                                             }}
                                         >
                                             <img
-                                                src={item.photo} 
-                                                alt={item.heading}
+                                                src={item?.photo} 
+                                                alt={item?.heading}
                                                 style={{
                                                     display: 'block',
                                                     objectFit: 'cover',
@@ -40,10 +40,10 @@ export default function ServicesResidental({ data }) {
                                             />
                                         </div>
                                         <div style={{ marginTop: '5%' }}>
-                                            <h4 style={{ fontWeight: '600' }}>{item.heading }</h4>
+                                            <h4 style={{ fontWeight: '600' }}>{item?.heading }</h4>
                                             <div
                                                 style={{ whiteSpace: "pre-wrap", fontSize: '16px', color: 'rgba(0, 0, 0, 1)' }}
-                                                dangerouslySetInnerHTML={{ __html: item.text }} // Render rich text from API or default text
+                                                dangerouslySetInnerHTML={{ __html: item?.text }} // Render rich text from API or default text
                                             ></div>
                                         </div>
                                     </div>

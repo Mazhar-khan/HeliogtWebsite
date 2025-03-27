@@ -79,7 +79,7 @@ export default function EstimatedRevolutation() {
 
             // Assuming the response contains the user object with the required fields
             const user = response.data.user;
-
+            console.log('user',response)
             // Update the context with the user data
             setData(prevData => ({
                 ...prevData,

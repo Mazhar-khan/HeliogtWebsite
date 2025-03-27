@@ -1,5 +1,5 @@
+import { useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom';
-import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import Slider from "./Slider";
@@ -20,13 +20,59 @@ import BrandImg from "./BrandImg";
 import { Helmet } from 'react-helmet';
 import Testimonial from '../testimonial/Testimonial';
 import Team from '../AboutUs/Team';
-
+import axios from "axios";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay, Pagination } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
+import '@fortawesome/fontawesome-free/css/all.min.css';
 
 const Home = () => {
+    const [data, setData] = useState(null);
+    const [solar, setSolar] = useState(null)
+    const [images, setImages] = useState(null);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await axios.get(`https://kcsundial.com/api/websitemeta/1`);
+                setData(response.data.data);
+            } catch (error) {
+                console.error("Error fetching data:", error);
+            }
+        };
+
+        const fetchDataOfGoSolar = async () => {
+            try {
+                const response = await axios.get(`https://kcsundial.com/api/gosolar/1`);
+                setSolar(response.data.data);
+            } catch (error) {
+                console.error("Error fetching data:", error);
+            }
+        };
+
+
+
+        const fetchImageData = async () => {
+            try {
+                const response = await axios.get(`https://kcsundial.com/api/ourworkweb`);
+                setImages(response.data.data.slice(0, 8));
+            } catch (error) {
+                console.error("Error fetching data:", error);
+            }
+        };
+
+
+
+        fetchData();
+        fetchDataOfGoSolar();
+        fetchImageData();
+    }, []);
 
     const navigate = useNavigate();
     useEffect(() => {
-        AOS.init({ duration: 1000, once: true }); // Animation duration: 1000ms, runs once
+        AOS.init({ duration: 1000, once: true });
     }, []);
 
     return (
@@ -36,7 +82,7 @@ const Home = () => {
                 <meta name="description" content="Welcome to Helio Green Tech, your premier source for innovative green technology solutions. Discover our commitment to sustainability, renewable energy, and eco-friendly practices designed to help you transition to a greener future. Join us in making a positive impact on the environment!" />
                 <meta name="keywords" content="Helio Green Tech, home, green technology, sustainable solutions, renewable energy, eco-friendly products, environmental innovation, clean technology" />
             </Helmet>
-            
+
             <section >
                 <div
                     className="section-border position-absolute"
@@ -51,7 +97,7 @@ const Home = () => {
                             className="w-100 object-fit-cover"
                             style={{ display: "block", height: "100vh", objectFit: "cover" }}
                         >
-                            <source src="https://joinarc.io/wp-content/uploads/2024/06/AdobeStock_759054931.mp4" type="video/mp4" />
+                            <source src={data && data[0]?.video} type="video/mp4" />
 
                         </video>
 
@@ -115,18 +161,10 @@ const Home = () => {
                             <div className="col-md-6" data-aos="fade-up" data-aos-delay="200">
                                 <div className="sqs-html-content" style={{ marginTop: '5%' }}>
                                     <h3 style={{ textAlign: "left", whiteSpace: "pre-wrap", fontSize: '30px', fontWeight: '600' }}>
-                                        Go <span style={{ color: 'rgba(147, 204, 15, 1)' }}>solar</span> with Helio GreenTech
+                                        {solar && solar[0]?.heading}
+                                        {/* <span style={{ color: 'rgba(147, 204, 15, 1)' }}> {solar[0]?.heading.split(" ")}</span>  */}
                                     </h3>
-                                    <p style={{ whiteSpace: "pre-wrap", fontSize: '16px' }}>
-                                        Helio GreenTech is a top rated, locally owned and operated
-                                        solar installer in Kansas City servicing Kansas and Missouri.
-                                        We are committed to building a sustainable future that’s
-                                        beneficial environmentally and financially for all. Installing
-                                        solar has never been an easier choice. With rising utility
-                                        costs solar can offer lower payments than what you are
-                                        paying today. Deciding to go solar means you have cleaner
-                                        energy and more affordable bills. Get a free quote to see
-                                        how much you can save by installing solar today.
+                                    <p dangerouslySetInnerHTML={{ __html: solar && solar[0]?.text.substring(0, 290) }} style={{ whiteSpace: "pre-wrap", fontSize: '16px' }}>
                                     </p>
                                 </div>
                             </div>
@@ -135,7 +173,7 @@ const Home = () => {
                                 <div className="video-container">
                                     <div className="styled-box" style={{ height: '50vh', width: '90%' }}>
                                         <iframe
-                                            src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+                                            src={solar && solar[0]?.video}
                                             frameBorder="0"
                                             allowFullScreen
                                             title="Solar Consultation Video"
@@ -149,6 +187,44 @@ const Home = () => {
                 </div>
             </section>
 
+            {/* <section>
+                <div data-aos="fade-up">
+                    <h2 style={{ textAlign: 'center', marginTop: '8%' }}>
+                        <strong>Our Projects</strong>
+                    </h2>
+                    <div className="containers" style={{ marginTop: '3%' }}>
+                        <Swiper
+                            spaceBetween={30}
+                            slidesPerView={3}
+                            loop={true}
+                            autoplay={{ delay: 3000, disableOnInteraction: false }}
+                            pagination={{ clickable: true }}
+                            breakpoints={{
+                                320: { slidesPerView: 1 },
+                                768: { slidesPerView: 2 },
+                                1024: { slidesPerView: 3 }
+                            }}
+                            modules={[Autoplay, Pagination]}
+                            className="mySwiper"
+                        >
+                            {images?.map((image, index) => (
+                                <SwiperSlide key={index} data-aos="fade-up">
+                                    <div className='containers'>
+                                        <div className="product-box">
+                                            <div className="product-opacity"></div>
+                                            <img src={image.photo} alt={image.name} style={{ cursor: 'pointer' }} />
+                                            <div className="product-content">
+                                                <h1 className="text-center">{image.name}</h1>
+                                                <span className="text-center">{image.role}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </SwiperSlide>
+                            ))}
+                        </Swiper>
+                    </div>
+                </div>
+            </section> */}
 
             <Slider />
             <Boxs />

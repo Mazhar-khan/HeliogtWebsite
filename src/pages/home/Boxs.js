@@ -36,7 +36,7 @@ export default function Boxs() {
                                                             <span className="sqsrte-text-color--accent">
                                                                 <strong style={{ fontSize: '36px' }}>25 year</strong>
                                                             </span>
-                                                            <span style={{ color: "white", fontSize: '12px' }}> Warranty</span>
+                                                            <span style={{ color: "white", fontSize: '18px' }}> Warranty</span>
                                                         </p>
                                                     </div>
                                                     <hr style={{ width: '50%', marginLeft: '25%', marginTop: '12%', color: 'rgba(255, 255, 255, 0.2)' }} />
@@ -78,7 +78,7 @@ export default function Boxs() {
                                                             <span className="sqsrte-text-color--accent">
                                                                 <strong style={{ fontSize: '36px' }}> 30%</strong>
                                                             </span>
-                                                            <span style={{ color: "white", fontSize: '12px' }}> TEX CREDIT </span>
+                                                            <span style={{ color: "white", fontSize: '18px' }}> TEX CREDIT </span>
                                                         </p>
                                                     </div>
                                                     <hr style={{ width: '50%', marginLeft: '25%', marginTop: '12%', color: 'rgba(255, 255, 255, 0.2)' }} />
@@ -117,7 +117,7 @@ export default function Boxs() {
                                                             <span className="sqsrte-text-color--accent">
                                                                 <strong style={{ fontSize: '36px' }}>$0 DOWN</strong>
                                                             </span>
-                                                            <span style={{ color: "white", fontSize: '12px' }}> FINANCING</span>
+                                                            <span style={{ color: "white", fontSize: '18px' }}> FINANCING</span>
                                                         </p>
                                                     </div>
                                                     <hr style={{ width: '50%', marginLeft: '25%', marginTop: '12%', color: 'rgba(255, 255, 255, 0.2)' }} />

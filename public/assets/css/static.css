@@ -570,12 +570,85 @@ p {
   border-radius: 2px 2px 30px 30px;
 }
 
+.white-text span p{
+  color: white !important;
+}
+.review-section {
+  /* background: linear-gradient(135deg, #f8f9fa, #e9ecef); */
+  /* background-color: #0d1647; */
+  padding: 60px 0;
+}
+
+.testimonial-card {
+  background: #0d1647;
+  backdrop-filter: blur(15px);
+  border-radius: 15px;
+  padding: 25px;
+  min-height: 400px; /* Fixed height for uniformity */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.testimonial-img img {
+  width: 85px;
+    height: 85px;
+    border-radius: 50%;
+    border: 3px solid #f1c40f;
+    object-fit: cover;
+}
+
+.testimonial-name {
+  font-size: 1.4rem;
+    font-weight: bold;
+    margin-top: 10px;
+    color: #f8f9fa;
+}
+
+.testimonial-category {
+  font-size: 1rem;
+  color: #f1c40f;
+  font-style: italic;
+}
+
+.testimonial-rating i {
+  font-size: 1.3rem;
+  margin: 3px;
+  transition: all 0.3s;
+}
+
+.testimonial-rating i:hover {
+  transform: scale(1.1);
+}
+
+.glow {
+  text-shadow: 0px 0px 5px #f1c40f;
+}
+
+
+
+.review-heading {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 40px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
 /* .page-section {
   position: relative;
   overflow: hidden;
 } */
 .curve {
-  background-image: url('../content/solar_footer.webp'), url('../content/bg_exp.png');
+  background-image: url('../content/bg_exp1.png'), url('../content/bg_exp.png');
   background-size: cover, cover;
   background-position: center -5%, center -2%;
   background-repeat: no-repeat, no-repeat;
@@ -1582,7 +1655,7 @@ footer .bottom-details .bottom_text {
 }
 
 .team-section {
-  background: linear-gradient(to bottom, #f8f9fa, #e9ecef);
+  /* background: linear-gradient(to bottom, #f8f9fa, #e9ecef); */
 }
 .team-card {
   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
@@ -1685,10 +1758,10 @@ footer .bottom-details .bottom_text {
 }
 
 .testimonial-img {
-  background-color: #1DA1F2;
+  /* background-color: #1DA1F2; */
   max-width: 100px;
   max-height: 100px;
-  border-radius: 50%;
+  border-radius: 30%;
   overflow: hidden;
   margin: 0 auto;
 }
@@ -1707,43 +1780,44 @@ footer .bottom-details .bottom_text {
 }
 
 .testimonial-text {
-  font-size: 16px;
+  font-size: 1rem;
   line-height: 1.5;
-  color: #f1f1f1;
+  color: #ddd;
   text-align: justify;
-  min-height: 80px;  
-  max-height: 150px;
-  overflow: auto;
+  max-height: 80px; /* Limit height */
+  overflow: hidden;
   text-overflow: ellipsis;
   padding: 10px;
-  border-left: 4px solid #ffc107;
-  background: rgba(255, 255, 255, 0.1);
   border-radius: 5px;
 }
-
-.testimonial-text::-webkit-scrollbar {
-  width: 8px;
+@media (max-width: 768px) {
+  .testimonial-card {
+      min-height: 350px;
+  }
 }
+/* .testimonial-text::-webkit-scrollbar {
+  width: 8px;
+} */
 
-.testimonial-text::-webkit-scrollbar-track {
+/* .testimonial-text::-webkit-scrollbar-track {
   background: rgba(255, 255, 255, 0.2); 
   border-radius: 10px;
-}
+} */
 
-.testimonial-text::-webkit-scrollbar-thumb {
+/* .testimonial-text::-webkit-scrollbar-thumb {
   background: #ffc107;
   border-radius: 10px;
   border: 2px solid rgba(255, 255, 255, 0.3);
-}
+} */
 
-.testimonial-text::-webkit-scrollbar-thumb:hover {
+/* .testimonial-text::-webkit-scrollbar-thumb:hover {
   background: #e0a800;
-}
+} */
 
-.testimonial-text {
+/* .testimonial-text {
   scrollbar-color: #ffc107 rgba(255, 255, 255, 0.2);
   scrollbar-width: thin;
-}
+} */
 
 
 

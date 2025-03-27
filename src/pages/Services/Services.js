@@ -10,6 +10,20 @@ import axios from "axios";
 
 export default function Services() {
     const [data, setData] = useState(null);
+    const [faqData, setfaqData] = useState([]);
+
+ 
+        const fetchFaqData = async () => {
+            try {
+                const response = await axios.get(`https://kcsundial.com/api/faqweb`);
+                // console.log('response',response.data.data)
+                setfaqData(response.data.data);
+            } catch (error) {
+                console.error("Error fetching data:", error);
+            }
+        };
+
+    
 
     useEffect(() => {
         const fetchData = async () => {
@@ -23,6 +37,7 @@ export default function Services() {
         };
 
         fetchData();
+        fetchFaqData();
     }, []);
 
     return (
@@ -87,7 +102,7 @@ export default function Services() {
 
             <ServicesResidental data={data} />
             <OurServices />
-            <ServicesFaqs />
+            <ServicesFaqs data={faqData} />
             <WhatMore />
             <ServicesLocation />
             <BrandImg />

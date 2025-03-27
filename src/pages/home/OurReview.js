@@ -7,6 +7,8 @@ import { Autoplay, Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
+import '@fortawesome/fontawesome-free/css/all.min.css'; // Import FontAwesome
+
 
 export default function OurReview() {
     const [data, setData] = useState([]);
@@ -24,40 +26,45 @@ export default function OurReview() {
         fetchData();
     }, []);
 
-    return (
-        <div>
-            <h2 style={{ textAlign: 'center', marginTop: '8%' }}>
-                <strong>Our REVIEW</strong>
-            </h2>
+    // Function to render star rating
+    const renderStars = (stars) => {
+        const totalStars = 5; // Maximum rating
+        return [...Array(totalStars)].map((_, i) => (
+            <i key={i} className={`fa ${i < stars ? "fa-star text-warning glow" : "fa-star text-secondary"}`}></i>
+        ));
+    };
 
-            <div className="container text-center my-3">
+    return (
+        <div className="review-section">
+            <h2 className="review-heading">What Our Customers Say</h2>
+
+            <div className="container text-center">
                 <Swiper
-                    spaceBetween={20}
+                    spaceBetween={30}
                     slidesPerView={3}
                     loop={true}
-                    autoplay={{ delay: 2000, disableOnInteraction: false }}
+                    autoplay={{ delay: 3000, disableOnInteraction: false }}
                     pagination={{ clickable: true }}
                     breakpoints={{
-                        320: { slidesPerView: 1 },  
-                        768: { slidesPerView: 2 },  
-                        1024: { slidesPerView: 3 }  
+                        320: { slidesPerView: 1 },
+                        768: { slidesPerView: 2 },
+                        1024: { slidesPerView: 3 }
                     }}
                     modules={[Autoplay, Pagination]}
                     className="mySwiper"
                 >
                     {data.map((it, index) => (
                         <SwiperSlide key={index} className="testimonial-slide">
-                            <div className="testimonial">
+                            <div className="testimonial-card">
                                 <div className="testimonial-img">
-                                    <img src={it.photo} alt={it.heading} className="img-fluid rounded-circle" />
+                                    <img src={it.photo} alt={it.name} className="img-fluid" />
                                 </div>
                                 <h5 className="testimonial-name">{it.name}</h5>
-                                <div className="testimonial-rating text-warning">
-                                    {[...Array(parseInt(it.rating))].map((_, i) => (
-                                        <i key={i} className="fas fa-star"></i>
-                                    ))}
+                                <h6 className="testimonial-category">{it.category}</h6>
+                                <div className="testimonial-rating">
+                                    {renderStars(it.stars)}
                                 </div>
-                                <p className="testimonial-text" dangerouslySetInnerHTML={{ __html: it.text }}></p>
+                                <p className="testimonial-text">{it.text}</p>
                             </div>
                         </SwiperSlide>
                     ))}

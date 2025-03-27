@@ -66,7 +66,7 @@ export default function GoingSolar() {
                                                         data-button-type="primary"
                                                     >
                                                         <a
-                                                            href="/"
+                                                            href="/estimated"
                                                             className="buttone-elements"
                                                             style={{ textDecoration: 'none' }}
                                                         >

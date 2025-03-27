@@ -1,10 +1,28 @@
-import React from 'react';
+import { useEffect, useState } from "react";
 import SolarGoingGreen from './SolarGoingGreen';
 import SolarSameEnerg from './SolarSameEnerge';
 import SolarPotential from './SolarPotential';
 import { Helmet } from 'react-helmet';
+import axios from "axios";
 
 export default function GoSolar() {
+    const [data, setData] = useState(null);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await axios.get(`https://kcsundial.com/api/gosolar/1`);
+                // console.log("ew",response.data.data[0])
+                setData(response.data.data[0]);
+            } catch (error) {
+                console.error("Error fetching data:", error);
+            }
+        };
+
+        fetchData();
+        // console.log("daat",data)
+    }, []);
+
     return (
         <>
             <Helmet>
@@ -53,8 +71,8 @@ export default function GoSolar() {
                                                 <div className="parent-container" style={{ position: 'relative', height: '300px' }}>
                                                     <h2 className="text-bottom-left">
 
-                                                        <strong className="text-accentes">WHY GO </strong>
-                                                        <strong className="text-accented"> SOLAR </strong>
+                                                        <strong className="text-accentes"> {data?.heading.split(" ")[0]} </strong>
+                                                        <strong className="text-accented"> {data?.heading.split(" ")[1]} </strong>
                                                     </h2>
                                                 </div>
                                             </div>
@@ -67,9 +85,9 @@ export default function GoSolar() {
                 </div>
             </section>
 
-            <SolarGoingGreen />
-            <SolarSameEnerg />
-            <SolarPotential />
+            <SolarGoingGreen data={data} />
+            {/* <SolarSameEnerg />
+            <SolarPotential /> */}
         </>
     )
 }

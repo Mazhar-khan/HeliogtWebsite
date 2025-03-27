@@ -26,7 +26,7 @@ export default function Button() {
                                             data-button-type="primary"
                                         >
                                             <a
-                                                href="/contact"
+                                                href="/estimated"
                                                 className="button-elements"
                                                 style={{ textDecoration: 'none', color: 'black', fontWeight: '500' }}
                                             >
