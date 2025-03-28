@@ -69,7 +69,7 @@ export default function ServicesFaqs({ data }) {
                                         <span 
                                         style={{ paddingLeft:"5px", paddingRight:"5px" }}
                                         className="accordion-title">{item.question}</span>
-                                        <span
+                                        <span style={{ marginRight:'5px' }}
                                             className={`icons  fas ${activeIndex === index ? "fa-angle-up" : "fa-angle-down"
                                                 }`}
                                             aria-hidden="true"

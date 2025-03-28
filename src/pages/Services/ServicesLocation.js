@@ -85,13 +85,13 @@ export default function ServicesLocation() {
                                             data-button-size="medium"
                                             data-button-type="primary"
                                         >
-                                            <a
+                                            {/* <a
                                                 href="/contact"
                                                 className="button-elements"
                                                 style={{ textDecoration: 'none', color: 'rgba(238, 238, 238, 1)',fontWeight: '500'}}
                                             >
                                                 Check out our reviews 
-                                            </a>
+                                            </a> */}
                                         </div>
                                     </div>
                                 </div>

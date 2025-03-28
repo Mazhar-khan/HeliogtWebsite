@@ -36,7 +36,7 @@ export default function OurReview() {
 
     return (
         <div className="review-section">
-            <h2 className="review-heading">What Our Customers Say</h2>
+            <h2 className="review-heading">Hear From Our Happy Customers</h2>
 
             <div className="container text-center">
                 <Swiper
@@ -59,12 +59,18 @@ export default function OurReview() {
                                 <div className="testimonial-img">
                                     <img src={it.photo} alt={it.name} className="img-fluid" />
                                 </div>
-                                <h5 className="testimonial-name">{it.name}</h5>
-                                <h6 className="testimonial-category">{it.category}</h6>
+                                <div>
+                                    <h5 className="testimonial-name">{it.name}</h5>
+                                </div>
+                                <div>
+                                    <h6 className="testimonial-category">{it.category}</h6>
+                                </div>
                                 <div className="testimonial-rating">
                                     {renderStars(it.stars)}
                                 </div>
-                                <p className="testimonial-text">{it.text}</p>
+                                <div>
+                                    <p className="testimonial-text">{it.text}</p>
+                                </div>
                             </div>
                         </SwiperSlide>
                     ))}

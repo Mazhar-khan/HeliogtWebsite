@@ -6,6 +6,17 @@ import axios from "axios";
 
 export default function FinancingSection() {
     const [data, setData] = useState(null);
+    const [metaData, setMetaData] = useState(null);
+
+    const fetchMetaData = async () => {
+        try {
+            const response = await axios.get(`https://kcsundial.com/api/websitemeta/1`);
+            console.log("data12", response.data.data)
+            setMetaData(response.data.data[0]);
+        } catch (error) {
+            console.error("Error fetching data:", error);
+        }
+    };
 
     useEffect(() => {
         const fetchData = async () => {
@@ -17,7 +28,7 @@ export default function FinancingSection() {
                 console.error("Error fetching data:", error);
             }
         };
-
+        fetchMetaData();
         fetchData();
     }, []);
 
@@ -35,16 +46,21 @@ export default function FinancingSection() {
                     style={{ zIndex: -1 }}
                 >
                     <div className="section-background position-absolute">
-                        <video
-                            autoPlay
-                            loop
-                            muted
-                            playsInline
-                            className="w-100 object-fit-cover"
-                            style={{ display: "block", height: "80vh", objectFit: "cover" }}
-                        >
-                            <source src="https://joinarc.io/wp-content/uploads/2024/06/AdobeStock_759054931.mp4" type="video/mp4" />
-                        </video>
+                        {
+                            metaData && (
+                                <video
+                                autoPlay
+                                loop
+                                muted
+                                playsInline
+                                className="w-100 object-fit-cover"
+                                style={{ display: "block", height: "80vh", objectFit: "cover" }}
+                            >
+                                <source src={metaData.video} type="video/mp4" />
+                            </video>
+                            )
+                        }
+                       
                         <div
                             className="section-background-overlay position-absolute"
                             style={{ backgroundColor: "rgba(0, 0, 0, 0.3)", pointerEvents: "none" }}

@@ -30,14 +30,15 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 
 const Home = () => {
     const [data, setData] = useState(null);
-    const [solar, setSolar] = useState(null)
+    const [solar, setSolar] = useState(null);
     const [images, setImages] = useState(null);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const response = await axios.get(`https://kcsundial.com/api/websitemeta/1`);
-                setData(response.data.data);
+                console.log("data12", response.data.data)
+                setData(response.data.data[0]);
             } catch (error) {
                 console.error("Error fetching data:", error);
             }
@@ -63,11 +64,10 @@ const Home = () => {
             }
         };
 
-
-
         fetchData();
         fetchDataOfGoSolar();
         fetchImageData();
+
     }, []);
 
     const navigate = useNavigate();
@@ -89,17 +89,27 @@ const Home = () => {
                     style={{ zIndex: -1 }}
                 >
                     <div className="section-background position-absolute">
-                        <video
-                            autoPlay
-                            loop
-                            muted
-                            playsInline
-                            className="w-100 object-fit-cover"
-                            style={{ display: "block", height: "100vh", objectFit: "cover" }}
-                        >
-                            <source src={data && data[0]?.video} type="video/mp4" />
+                        {
+                            data ? (
+                                <video
+                                    autoPlay
+                                    loop
+                                    muted
+                                    playsInline
+                                    className="w-100 object-fit-cover"
+                                    style={{ display: "block", height: "100vh", objectFit: "cover" }}
+                                >
+                                    <source src={data.video} />
 
-                        </video>
+                                </video>
+                            ) : (
+                                <div style={{ display:'flex',justifyContent:'center',alignItems:'center' }} >
+
+                                <p>Loading video...</p>
+                                </div>
+                            )
+                        }
+
 
                         <div
                             className="section-background-overlay position-absolute"
@@ -230,13 +240,13 @@ const Home = () => {
             <Boxs />
             <Button />
             <CurvedSection />
-            <SaveSolar />
+            {/* <SaveSolar /> */}
             <SolarConsultation />
             <GoingSolar />
-            <SolarService />
+            {/* <SolarService /> */}
             <Boxes />
-            <SolarInstallition />
-            <OutstandingSection />
+            {/* <SolarInstallition /> */}
+            {/* <OutstandingSection /> */}
             <Team />
             {/* <OurReview /> */}
             <Testimonial />

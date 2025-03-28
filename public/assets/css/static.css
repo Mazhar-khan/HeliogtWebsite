@@ -584,7 +584,7 @@ p {
   backdrop-filter: blur(15px);
   border-radius: 15px;
   padding: 25px;
-  min-height: 400px; /* Fixed height for uniformity */
+  min-height: 400px; 
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -608,11 +608,12 @@ p {
 .testimonial-name {
   font-size: 1.4rem;
     font-weight: bold;
-    margin-top: 10px;
+    margin-top: 3px;
     color: #f8f9fa;
 }
 
 .testimonial-category {
+  /* margin-top: -17px; */
   font-size: 1rem;
   color: #f1c40f;
   font-style: italic;
@@ -635,11 +636,12 @@ p {
 
 
 .review-heading {
-  font-size: 2.5rem;
+  /* font-size: 2.5rem; */
   font-weight: bold;
-  color: #fff;
+  color: #333;
   margin-bottom: 40px;
-  text-transform: uppercase;
+  text-align: center;
+  /* text-transform: uppercase; */
   letter-spacing: 1.5px;
 }
 
@@ -1766,16 +1768,11 @@ footer .bottom-details .bottom_text {
   margin: 0 auto;
 }
 
-.testimonial-name {
-  font-size: 20px;
-  text-transform: uppercase;
-  margin: 15px 0;
-  font-weight: bold;
-}
+
 
 .testimonial-rating {
   color: #ffc107;
-  margin-bottom: 10px;
+  margin-bottom: 25px;
   font-size: 18px;
 }
 
@@ -1831,9 +1828,9 @@ footer .bottom-details .bottom_text {
   display: grid;
   grid-auto-flow: dense;
   grid-template:
-    "1fr 1fr 1fr 1fr 1fr" 33.33vh
-    "1fr 1fr 1fr 1fr 1fr" 33.33vh
-    "1fr 1fr 1fr 1fr 1fr" 33.33vh;
+    "1fr 1fr 1fr 1fr 1fr"
+    "1fr 1fr 1fr 1fr 1fr" 
+    "1fr 1fr 1fr 1fr 1fr";
   box-shadow: 0px 0px 13px 0px rgba(255, 255, 255, 0.4);
 }
 
@@ -1854,7 +1851,7 @@ footer .bottom-details .bottom_text {
   opacity: 0;
   transition: 0.8s;
   background-color: rgba(255, 255, 255, 0.48);
-  padding: 8px 40px;
+  /* padding: 8px 40px; */
   position: relative;
 }
 

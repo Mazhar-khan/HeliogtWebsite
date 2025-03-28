@@ -56,7 +56,7 @@ export default function FinanceEstimate() {
                                                     </p>
                                                     <a
                                                     
-                                                        href="/contact"
+                                                        href="/estimated"
                                                         className="button-elementes"
                                                         style={{ textDecoration: 'none', color: '#fff' }}
                                                     >
